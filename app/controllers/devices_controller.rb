@@ -16,7 +16,7 @@ class DevicesController < ApplicationController
   end
 
   def create
-    @device = Device.new(device_params)
+    @device = Device.new(device_params.merge(user_id: current_user.id))
     if @device.save
       redirect_to @device, notice: 'Device was successfully created.'
     else
