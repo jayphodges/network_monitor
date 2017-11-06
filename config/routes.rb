@@ -6,4 +6,6 @@ Rails.application.routes.draw do
 
     resources :dashboard, only: [:index]
     resources :devices
+    resources :messages, only: [:new]
+    get '/update', to: "devices#download"
 end

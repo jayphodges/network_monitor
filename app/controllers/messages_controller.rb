@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
 
-  def create
-
+  def new
+    binding.pry
     RabbitService.retreive()
     redirect_to devices_path
   end
