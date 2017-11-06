@@ -3,6 +3,7 @@ class CreateMessages < ActiveRecord::Migration[5.1]
     create_table :messages do |t|
       t.string :host
       t.string :mac
+      t.string :source
       t.integer :tx
       t.integer :rx
       t.float :pl
