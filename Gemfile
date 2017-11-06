@@ -18,7 +18,8 @@ gem 'faraday'
 gem 'omniauth'
 gem 'omniauth-github'
 gem 'bunny'
-
+gem 'groupdate'
+gem 'chartkick'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
