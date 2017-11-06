@@ -37,6 +37,12 @@ class DevicesController < ApplicationController
     redirect_to devices_url, notice: 'Device was successfully destroyed.'
   end
 
+  def download
+    device = Device.find(params["format"])
+    RabbitService.retreive(device.mac, device.id)
+    redirect_to devices_path
+  end
+
   private
     def set_device
       @device = Device.find(params[:id])

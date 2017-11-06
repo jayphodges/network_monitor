@@ -17,6 +17,8 @@ gem 'figaro'
 gem 'faraday'
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'bunny'
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

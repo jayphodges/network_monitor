@@ -6,4 +6,5 @@ class Device < ApplicationRecord
   #           message: "Invalid MAC format"}
 
   belongs_to :user
+  has_many :messages
 end
