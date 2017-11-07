@@ -18,7 +18,4 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  config.include(OmniauthMacros)
-
-  OmniAuth.config.test_mode = true
 end
