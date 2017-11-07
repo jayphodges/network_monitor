@@ -13,3 +13,4 @@
 <%= link_to 'Edit', edit_device_path(@device) %> |
 <%= link_to 'Back', devices_path %>
 <%= line_chart Message.by_month, class: 'card-text' %>
+<%= line_chart @messages.group_by_minute(:created_at).average(:ave), class: 'card-text' %>

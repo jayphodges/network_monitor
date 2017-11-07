@@ -1,10 +1,11 @@
 class SessionsController < ApplicationController
 
   def create
+    binding.pry
     @user = User.find_or_create_by_auth(request.env['omniauth.auth'])
     if @user
       session[:user_id] = @user.id
-      redirect_to dashboard_index_path, notice: "You have successfully logged in!"
+      redirect_to devices_path, notice: "You have successfully logged in!"
     else
       redirect_to root_path, notice: "Login unsuccessful!"
     end
