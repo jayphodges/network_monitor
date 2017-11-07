@@ -1,15 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @device.name %>
-</p>
+<div class="container">
+<div class="row" style="border-width: 1px;">
+  <div class="col-6 col-md-4">
+    <p>Name:</p>
+    <h4><%= @device.name %></h4>
+  </div>
+  <div class="col-6 col-md-4">
+    <p>MAC:</p>
+    <h4><%= @device.mac %></h4>
+  </div>
+  <div class="col-6 col-md-4">
+    <p>MAC:</p>
+    <h4><%= @device.messages.count %></h4>
+  </div>
+</div>
+<br><br>
 
-<p>
-  <strong>Mac:</strong>
-  <%= @device.mac %>
-</p>
+
+  <div class="row">
+    <div class="col-6">
+      <h4>Average Ping Time: </h4>
+      <%= line_chart @messages.group_by_minute(:created_at).average(:ave), class: 'card-text' %>
+    </div>
+    <div class="col-6">
+      <h4>Messages by Host: </h4>
+      <%= pie_chart @messages.group(:host).count %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <h4>Average Packet Loss: </h4>
+      <%= line_chart @messages.group_by_minute(:created_at).average(:pl), class: 'card-text' %>
+    </div>
+    <div class="col-6">
+      <h4>Standard Deviation: </h4>
+      <%= line_chart @messages.group_by_minute(:created_at).average(:stddev), class: 'card-text' %>
+    </div>
+  </div>
+  <h4> Messages by Day: </h4>
+  <%= line_chart @messages.group_by_hour(:created_at).count, class: 'card-text' %>
+</div>
+
 
 <%= link_to 'Edit', edit_device_path(@device) %> |
 <%= link_to 'Back', devices_path %>
-<%= line_chart Message.by_month, class: 'card-text' %>
