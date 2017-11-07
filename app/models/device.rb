@@ -7,4 +7,8 @@ class Device < ApplicationRecord
 
   belongs_to :user
   has_many :messages
+
+  def messages_by_hour
+    messages.group_by_hours(:created_at).count
+  end
 end

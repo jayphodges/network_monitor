@@ -6,6 +6,7 @@ class DevicesController < ApplicationController
   end
 
   def show
+    @messages = @device.messages
   end
 
   def new

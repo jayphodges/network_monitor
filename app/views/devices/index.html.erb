@@ -1,34 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Devices</h1>
-
-<table>
-  <thead>
+<%= link_to 'Add Device', new_device_path %>
+<br><br>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
-      <th>Name</th>
-      <th>Mac</th>
-      <th>Message Count</th>
-      <th>Monitored IPs</th>
+      <th scope="col">Name</th>
+      <th scope="col">MAC</th>
+      <th scope="col">Status</th>
+      <th scope="col">Message Count</th>
       <th colspan="4"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @devices.each do |device| %>
       <tr>
-        <td><%= device.name %></td>
+        <td><%= link_to device.name, device %></td>
         <td><%= device.mac %></td>
         <td><%= device.messages.count %></td>
-        <td><%= device.messages.pluck(:host).uniq %></td>
-        <td><%= link_to 'Update', update_path(device) %></td>
-        <td><%= link_to 'Show', device %></td>
-        <td><%= link_to 'Edit', edit_device_path(device) %></td>
+        <td><div class="text-center"><%= device.messages.count %></div></td>
+        <td><%= link_to 'Update Data', update_path(device) %></td>
         <td><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Device', new_device_path %>
+<!--
+<%= link_to '', new_device_path, type: "button", class: "btn btn-primary mdi mdi-cloud-download" %> -->
