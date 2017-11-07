@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Devices</h1>
-
-<br>
+<%= link_to 'Add Device', new_device_path %>
+<br><br>
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -18,8 +18,8 @@
       <tr>
         <td><%= link_to device.name, device %></td>
         <td><%= device.mac %></td>
-        <td><%= device.messages.last.updated_at %></td>
         <td><%= device.messages.count %></td>
+        <td><div class="text-center"><%= device.messages.count %></div></td>
         <td><%= link_to 'Update Data', update_path(device) %></td>
         <td><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

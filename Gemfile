@@ -20,6 +20,8 @@ gem 'omniauth-github'
 gem 'bunny'
 gem 'groupdate'
 gem 'chartkick'
+gem 'chart-js-rails'
+gem 'jquery-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
