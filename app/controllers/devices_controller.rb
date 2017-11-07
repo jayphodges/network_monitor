@@ -1,8 +1,9 @@
 class DevicesController < ApplicationController
   before_action :set_device, only: [:show, :edit, :update, :destroy]
+  before_action :authorize!
 
   def index
-    @devices = Device.all
+    @devices = @current_user.devices
   end
 
   def show
