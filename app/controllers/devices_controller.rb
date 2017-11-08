@@ -8,6 +8,9 @@ class DevicesController < ApplicationController
 
   def show
     @messages = @device.messages
+    if @messages.count != 0
+      @location = Location.return_city(@messages.last.source)
+    end
   end
 
   def new
@@ -20,7 +23,7 @@ class DevicesController < ApplicationController
   def create
     @device = Device.new(device_params.merge(user_id: current_user.id))
     if @device.save
-      redirect_to @device, notice: 'Device was successfully created.'
+      redirect_to devices_path, notice: 'Device was successfully created.'
     else
       render :new
     end

@@ -1,22 +1,32 @@
 <p id="notice"><%= notice %></p>
-
+<p class="text-right">
+<%= link_to 'Edit Name', edit_device_path(@device) %> |
+<%= link_to 'Back', devices_path %>
+</p>
 <div class="container">
 <div class="row" style="border-width: 1px;">
-  <div class="col-6 col-md-4">
+  <div class="col">
     <p>Name:</p>
     <h4><%= @device.name %></h4>
   </div>
-  <div class="col-6 col-md-4">
+  <div class="col">
     <p>MAC:</p>
     <h4><%= @device.mac %></h4>
   </div>
-  <div class="col-6 col-md-4">
-    <p>MAC:</p>
+  <div class="col">
+    <p>Messages:</p>
     <h4><%= @device.messages.count %></h4>
+  </div>
+  <div class="col">
+    <p>Location:</p>
+    <% if @device.messages.count == 0%>
+    <h4>Inactive</h4>
+    <% else %>
+    <h4><%= @location.city %>, <%= @location.region %></h4>
+    <% end %>
   </div>
 </div>
 <br><br>
-
 
   <div class="row">
     <div class="col-6">
@@ -38,10 +48,6 @@
       <%= line_chart @messages.group_by_minute(:created_at).average(:stddev), class: 'card-text' %>
     </div>
   </div>
-  <h4> Messages by Day: </h4>
+  <h4> Incomming Messages: </h4>
   <%= line_chart @messages.group_by_hour(:created_at).count, class: 'card-text' %>
 </div>
-
-
-<%= link_to 'Edit', edit_device_path(@device) %> |
-<%= link_to 'Back', devices_path %>

@@ -31,6 +31,8 @@ group :development, :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
+  gem 'shoulda', '~> 3.5'
+  gem 'shoulda-matchers', '~> 2.0'
 end
 
 group :development do
