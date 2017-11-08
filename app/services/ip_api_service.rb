@@ -6,10 +6,9 @@ class IpApiService
     end
   end
 
-  def self.return_location(ip)
+  def return_location(ip)
     reply = @conn.get(ip)
-    JSON.parse(reply.body, symbolize_names: true)
-    binding.pry
+    JSON.parse(reply.body)["city"]
   end
 
 
