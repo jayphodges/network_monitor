@@ -8,6 +8,9 @@ class DevicesController < ApplicationController
 
   def show
     @messages = @device.messages
+    if @messages.count != 0
+      @location = Location.return_city(@messages.last.source)
+    end
   end
 
   def new

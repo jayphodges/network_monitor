@@ -5,21 +5,28 @@
 </p>
 <div class="container">
 <div class="row" style="border-width: 1px;">
-  <div class="col-6 col-md-4">
+  <div class="col">
     <p>Name:</p>
     <h4><%= @device.name %></h4>
   </div>
-  <div class="col-6 col-md-4">
+  <div class="col">
     <p>MAC:</p>
     <h4><%= @device.mac %></h4>
   </div>
-  <div class="col-6 col-md-4">
+  <div class="col">
     <p>Messages:</p>
     <h4><%= @device.messages.count %></h4>
   </div>
+  <div class="col">
+    <p>Location:</p>
+    <% if @device.messages.count == 0%>
+    <h4>Inactive</h4>
+    <% else %>
+    <h4><%= @location.city %>, <%= @location.region %></h4>
+    <% end %>
+  </div>
 </div>
 <br><br>
-
 
   <div class="row">
     <div class="col-6">

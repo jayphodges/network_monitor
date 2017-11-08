@@ -1,7 +1,8 @@
-class Ip
+class Location
   attr_reader :city,
               :isp,
-              :regionname
+              :regionname,
+              :region
 
   def initialize(response = {})
     @longname = response[:longName]
@@ -14,20 +15,20 @@ class Ip
     @countrycode = response[:countrycode]
     @isp = response[:isp]
     @lat = response[:lat]
-    @long = reponse[:long]
+    @long = response[:long]
     @org = response[:org]
     @query = response[:query]
     @region = response[:region]
-    @regionname = responsep[:regionName]
+    @regionname = response[:regionName]
     @status = response[:status]
     @timezone = response[:timezone]
     @zip = response[:zip]
+    @con = ApiService.new
   end
 
-  def self.return_city
-    stores = ApiService.search_by_zip(zip)
-    stores.map do |store|
-      Store.new(store)
-    end
+  def self.return_city(ip_address)
+    response = ApiService.new.reply(ip_address)
+    Location.new(response)
   end
+
 end

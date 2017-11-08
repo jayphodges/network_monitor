@@ -11,7 +11,7 @@ class MessageCreator
       stddev = response["stddev"].to_f
       device_id = response["device_id"].to_i
       created_at = Time.parse(response["date"])
-      source = response["host"]
+      source = response["source"]
       Message.create(mac: mac, tx: tx, rx: rx, pl: pl, min: min, max: max,
                      stddev: stddev, device_id: device_id, ave: ave,
                      host: host, created_at: created_at, source: source
