@@ -11,5 +11,4 @@ class IpApiService
     JSON.parse(reply.body)["city"]
   end
 
-
 end

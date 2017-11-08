@@ -8,9 +8,9 @@
     <tr>
       <th scope="col">Name</th>
       <th scope="col">MAC</th>
-      <th scope="col">Status</th>
-      <th scope="col">Message Count</th>
-      <th colspan="4"></th>
+      <th scope="col">Messages</th>
+      <th scope="col">Updated</th>
+      <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
@@ -19,13 +19,14 @@
         <td><%= link_to device.name, device %></td>
         <td><%= device.mac %></td>
         <td><%= device.messages.count %></td>
-        <td><div class="text-center"><%= device.messages.count %></div></td>
+        <% if device.messages.count == 0%>
+        <td>Inactive</td>
+        <% else %>
+        <td><%= time_ago_in_words(device.messages.last.updated_at)  %></td>
+        <% end %>
         <td><%= link_to 'Update Data', update_path(device) %></td>
         <td><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<!--
-<%= link_to '', new_device_path, type: "button", class: "btn btn-primary mdi mdi-cloud-download" %> -->
